@@ -1,0 +1,24 @@
+{
+  "name": "seo-checker",
+  "version": "1.0.0",
+  "description": "A Node.js package to let user can use this package to scan a HTML content and show all of the SEO defects",
+  "keywords": [
+    "seo"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Duc Le <lehoangduc.vt@gmail.com>",
+  "license": "ISC",
+  "engines": {
+    "node": ">= 9.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  }
+}
