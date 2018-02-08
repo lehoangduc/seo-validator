@@ -1,7 +1,7 @@
 {
-  "name": "seo-checker",
+  "name": "seo-validator",
   "version": "1.0.0",
-  "description": "A Node.js package to let user can use this package to scan a HTML content and show all of the SEO defects",
+  "description": "A Node.js package scan a HTML content and show all of SEO defects",
   "keywords": [
     "seo"
   ],
@@ -16,7 +16,7 @@
   "author": "Duc Le <lehoangduc.vt@gmail.com>",
   "license": "ISC",
   "engines": {
-    "node": ">= 9.0"
+    "node": ">= 8.0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2"

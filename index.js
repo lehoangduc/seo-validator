@@ -1,13 +1,13 @@
 'use strict'
 
 /**
- * Export seo-checker (with )
+ * Export seo
  */
 
-exports = module.exports = require('./lib/seo');
+exports = module.exports = require('./lib/validator')
 
 /*
   Export the version
 */
 
-exports.version = require('./package.json').version;
+exports.version = require('./package.json').version
