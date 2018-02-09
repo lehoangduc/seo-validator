@@ -5,6 +5,10 @@
   "keywords": [
     "seo"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lehoangduc/seo-validator"
+  },
   "main": "index.js",
   "files": [
     "index.js",
