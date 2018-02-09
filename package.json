@@ -1,6 +1,6 @@
 {
   "name": "seo-validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Node.js package scan a HTML content and show all of SEO defects",
   "keywords": [
     "seo"
