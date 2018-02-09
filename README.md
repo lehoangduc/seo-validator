@@ -1,8 +1,6 @@
 <h1 align="center">seo-validator</h1>
 <h5 align="center">A Node.js package scan a HTML content and show all of SEO defects.</h5>
 
-[![npm package](https://nodei.co/npm/seo-validator.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/seo-validator/)
-
 <br />
 
 ```js
@@ -30,18 +28,20 @@ try {
 }
 ```
 
+## Requirements
+Node.js 8.0 or greater
+
 ## Installation
 `npm install seo-validator`
 
 ## Predefined Rules
 1. Detect if there are any `<img />` tags without alt attribute<br />
 2. Detect if there are any `<a />` tags without rel attribute<br />
-3. In `<head>` tag<br />
-    i. Detect if there is any header that doesn’t have `<title>` tag<br />
-    ii. Detect if there is any header that doesn’t have `<meta name="descriptions" … />` tag<br />
-    iii. Detect if there is any header that doesn’t have `<meta name="keywords" … />` tag<br />
-4. Detect if there are more than 15 `<strong>` tag in HTML <br />
-5. Detect if a HTML have more than one `<h1>` tag<br />
+3. Detect if there is any header that doesn’t have `<title>` tag<br />
+4. Detect if there is any header that doesn’t have `<meta name="descriptions" … />` tag<br />
+5. Detect if there is any header that doesn’t have `<meta name="keywords" … />` tag<br />
+6. Detect if there are more than 15 `<strong>` tag in HTML <br />
+7. Detect if a HTML have more than one `<h1>` tag<br />
 
 ## API
 ### Rule
@@ -93,4 +93,74 @@ const output = new ConsoleOutput()
 //const output = new StreamOutput(stream)
 
 validator.setOutput(output)
+```
+
+### Validator
+#### constructor(skipPredefinedRules)
+```js
+const { Validator } = require('seo-validator')
+const validator = new Validator(true)
+//const validator = new Validator(false)
+```
+
+#### skipRules(indexes)
+```js
+validator.skipRules([1,4,5])
+```
+
+#### setInput(input)
+```js
+const { FileInput } = require('seo-validator')
+const filePath = __dirname + '/index.html'
+const input = new FileInput(filePath)
+
+validator.setInput(input)
+```
+
+#### setOutput(output)
+```js
+const { ConsoleOutput } = require('seo-validator')
+const filePath = __dirname + '/result.log'
+const output = new ConsoleOutput()
+
+validator.setOutput(output)
+```
+
+#### addRule(rule)
+```js
+validator.addRule(new RuleExistTag('head', 'title'))
+```
+
+#### validate() && getResult()
+```js
+try {
+  validator
+    .validate()
+    .then(async () => {
+      await validator.getResult()
+    })
+} catch (err) {
+  console.error(err)
+}
+```
+
+## Custom Rules
+```js
+const { Rule } = require('seo-validator')
+
+class NewRule extends Rule {
+  constructor(rootTag, ...params) {
+    super(rootTag)
+    ...
+  }
+
+  validate() {
+    // Write logic
+    this.isValid = true // or false
+  }
+
+  error() {
+    return !this.isValid ? `Error message` : ''
+  }
+}
 ```
